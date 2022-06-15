@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET  # this module helps in processing XML files.
 from datetime import datetime
 import pywget
 import zipfile
-
+import wget
 class Download_Files:
     def __init__(self):
         # Set files path

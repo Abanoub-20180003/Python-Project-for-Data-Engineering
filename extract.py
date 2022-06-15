@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+import os
+import pands as pd
+import xml.etree.ElementTree as ET  # this module helps in processing XML files.
+from datetime import datetime
+import pywget
+import zipfile
+import glob    
 
 class extract:
     def __init__(self):        
@@ -47,12 +54,12 @@ class extract:
         extracted_data = pd.DataFrame(columns=['name','height','weight']) # create an empty data frame to hold extracted data        
         #process all csv files
         for csvfile in glob.glob("*.csv"):
-            extracted_data = extracted_data.append(extract_from_csv(csvfile), ignore_index=True)            
+            extracted_data = extracted_data.append(self.extract_from_csv(csvfile), ignore_index=True)            
         #process all json files
         for jsonfile in glob.glob("*.json"):
-            extracted_data = extracted_data.append(extract_from_json(jsonfile), ignore_index=True)       
+            extracted_data = extracted_data.append(self.extract_from_json(jsonfile), ignore_index=True)       
         #process all xml files
         for xmlfile in glob.glob("*.xml"):
-            extracted_data = extracted_data.append(extract_from_xml(xmlfile), ignore_index=True)
-        save_extracted_file(extracted_data)  
+            extracted_data = extracted_data.append(self.extract_from_xml(xmlfile), ignore_index=True)
+        self.save_extracted_file(extracted_data)  
         return extracted_data
