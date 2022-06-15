@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import os 
 import pands as pd 
-def transform:
+class transform:
+    
+    
     def __init__(self):
         # set local path 
         self.local_path = r'./Downloaded_Files/'
@@ -31,5 +33,5 @@ def transform:
         #Convert pounds to kilograms and round off to two decimals(one pound is 0.45359237 kilograms)
         self.data['weight'] = round(self.data.weight * 0.45359237,2)
         # save transformed file 
-        save_extracted_file(self.data)        
-        return data
+        self.save_extracted_file(self.data)        
+        return self.data
